@@ -38,6 +38,22 @@ namespace AlgorithmnDesignPracticeApp.Controllers
             return View();
         }
 
+        /// <summary>
+        /// reate a program that prompts for an input string and displays output that shows the input string and the number of
+        ///characters the string contains.
+        ///
+        ///Implement this program using a graphical user interface
+        //and update the character counter every time a key is
+        //pressed.If your language doesn’t have a particularly
+        //friendly GUI library, try doing this exercise with HTML
+        //and JavaScript instead.
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult CountingTheNumberOfcharacters()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
