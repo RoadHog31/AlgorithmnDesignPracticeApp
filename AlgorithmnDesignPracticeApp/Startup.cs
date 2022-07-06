@@ -7,7 +7,10 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
+using AlgorithmnDesignPracticeApp.Data;
 
 namespace AlgorithmnDesignPracticeApp
 {
@@ -23,7 +26,23 @@ namespace AlgorithmnDesignPracticeApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            //services.AddDbContext<SchoolAppContext>(cfg =>
+            //{
+            //    cfg.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            //});
+
+            //services.AddTransient<SchoolAppSeeder>();
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            services.AddScoped<IAlgorithmnDesignAppRepository, AlgorithmnDesignAppRepository>();
+            
+
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
